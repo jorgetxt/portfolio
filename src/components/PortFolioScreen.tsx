@@ -32,7 +32,7 @@ const App = () => {
         loaded={particlesLoaded}
         options={options}
       />
-      <Grid item style={{ zIndex: 2 }}>
+      {/* <Grid item style={{ zIndex: 2 }}>
         <Card
           image="sliders/developer_slide1.jpg"
           alt="test"
@@ -55,7 +55,7 @@ const App = () => {
           description="descripcion"
           title="Titulo"
         />
-      </Grid>
+      </Grid> */}
     </>
   );
 };

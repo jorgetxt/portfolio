@@ -8,6 +8,7 @@ import Slider1 from "./Slider1";
 import PortfolioScreen from "../components/PortFolioScreen";
 import TextSlider from "../components/TextSlider";
 import ParallaxImg from "../components/HorizontalParallax";
+import CarouselScreen from "../components/CarouselScreen";
 
 export default function Home() {
   return (
@@ -62,8 +63,9 @@ export default function Home() {
             title="Titulo"
           />
         </Grid> */}
-        <Grid item>
-          <PortfolioScreen />
+        <PortfolioScreen />
+        <Grid item xs={12}>
+          <CarouselScreen />
         </Grid>
       </Grid>
     </>

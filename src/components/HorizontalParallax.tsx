@@ -10,15 +10,16 @@ interface PageProps {
 
 const Page = ({ offset, gradient, onClick }: PageProps) => (
   <>
-    <ParallaxLayer offset={offset} speed={0.2} onClick={onClick}>
+    <ParallaxLayer factor={0.5} offset={offset} speed={0.2} onClick={onClick}>
       <div className={styles.slopeBegin} />
     </ParallaxLayer>
 
-    <ParallaxLayer offset={offset} speed={0.6} onClick={onClick}>
+    <ParallaxLayer factor={0.5} offset={offset} speed={0.6} onClick={onClick}>
       <div className={`${styles.slopeEnd} ${styles[gradient]}`} />
     </ParallaxLayer>
 
     <ParallaxLayer
+      factor={0.5}
       className={`${styles.text} ${styles.number}`}
       offset={offset}
       speed={0.3}
@@ -40,6 +41,7 @@ export default function App() {
     <div style={{ background: "#dfdfdf" }}>
       <Parallax
         className={styles.container}
+        style={{ overflow: "hidden", width: "50%" }}
         ref={parallax}
         pages={3}
         horizontal
