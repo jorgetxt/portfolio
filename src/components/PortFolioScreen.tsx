@@ -2,7 +2,7 @@ import { useCallback } from "react";
 import type { Container, Engine } from "tsparticles-engine";
 import Particles, { ParticlesProps } from "react-tsparticles";
 import { loadFull } from "tsparticles";
-import options from "./OptionsParticles";
+import options from "./OptionsParticlesLetter";
 import Card from "../app/Card";
 
 import Grid from "@mui/material/Grid";

@@ -18,21 +18,13 @@ function CarouselScreen() {
       key: "test3",
       content: <Card image={imageTest} />,
     },
-    {
-      key: "test4",
-      content: <Card image={imageTest} />,
-    },
-    {
-      key: "test5",
-      content: <Card image={imageTest} />,
-    },
   ];
   return (
     <div className="">
       <Carousel
         cards={cards}
         height="500px"
-        width="30%"
+        width="60%"
         margin="0 auto"
         offset={2}
         showArrows={false}
