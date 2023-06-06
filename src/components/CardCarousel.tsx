@@ -1,12 +1,12 @@
 import Button from "@mui/material/Button";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 
 import Styles from "./CardCarousel.module.css";
 import React, { useState } from "react";
 import { useSpring, animated } from "react-spring";
 
 interface Props {
-  image: string;
+  image: StaticImageData;
 }
 
 function Card({ image }: Props) {
@@ -25,7 +25,7 @@ function Card({ image }: Props) {
       onMouseEnter={() => setShown(true)}
       onMouseLeave={() => setShown(false)}
     >
-      <Image src={image} alt="Developer" width={1} height={1} />
+      <Image src={image} alt="Developer" height={200} />
 
       <h2>Title</h2>
       <p>
