@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 
 import styles from "./stylesText.module.css";
 import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
 
 const Trail: React.FC<{
   open: boolean;
@@ -33,10 +34,21 @@ export default function App() {
   return (
     <div className={styles.container} onClick={() => set((state) => !state)}>
       <Trail open={open}>
-        <span>Hola</span>
-        <span>soy</span>
-        <span>Jorge</span>
-        <span>Sit</span>
+        <Typography variant="h1" color="white">
+          Hola!
+        </Typography>
+        <Typography variant="h1" color="white">
+          soy Jorge
+        </Typography>
+        {/* <span></span> */}
+        <Typography variant="h2" color="white">
+          desarrollador web
+        </Typography>
+        {/* <span style={{ marginBottom: 10 }}>Hola, soy Jorge</span> */}
+        {/* <span>desarrollador web</span> */}
+        {/* <span>Jorge</span> */}
+        {/* <span>Sit</span> */}
+
         <Stack direction="row" spacing={2}>
           <Button variant="outlined" color="secondary">
             Descargar CV

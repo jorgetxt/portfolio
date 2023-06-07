@@ -23,6 +23,10 @@ const App = () => {
     },
     []
   );
+
+  if (typeof window) {
+    require("pathseg");
+  }
   return (
     <>
       <Particles

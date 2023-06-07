@@ -1,4 +1,5 @@
 import Button from "@mui/material/Button";
+import Grid from "@mui/material/Grid";
 import Image, { StaticImageData } from "next/image";
 
 import Styles from "./CardCarousel.module.css";
@@ -6,7 +7,7 @@ import React, { useState } from "react";
 import { useSpring, animated } from "react-spring";
 
 interface Props {
-  image: StaticImageData;
+  image: StaticImageData | string;
 }
 
 function Card({ image }: Props) {
@@ -25,7 +26,7 @@ function Card({ image }: Props) {
       onMouseEnter={() => setShown(true)}
       onMouseLeave={() => setShown(false)}
     >
-      <Image src={image} alt="Developer" height={200} />
+      <Image src={image} alt="Developer" height={200} width={200} />
 
       <h2>Title</h2>
       <p>
@@ -33,10 +34,14 @@ function Card({ image }: Props) {
         nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
         volutpat.
       </p>
-      <div className={Styles.btnn}>
-        <Button variant="contained">test</Button>
-        <Button variant="contained">test</Button>
-      </div>
+      <Grid container spacing={2}>
+        <Grid item>
+          <Button variant="contained">test</Button>
+        </Grid>
+        <Grid item>
+          <Button variant="contained">test</Button>
+        </Grid>
+      </Grid>
     </animated.div>
   );
 }

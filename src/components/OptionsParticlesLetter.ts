@@ -56,6 +56,7 @@ const options: ISourceOptions = {
       value: 1,
     },
   },
+
   polygon: {
     draw: {
       enable: true,
@@ -75,8 +76,12 @@ const options: ISourceOptions = {
     },
     scale: 1,
     type: "inline",
+    // data: {
+    //   path: "https://particles.js.org/images/google.svg",
+    // },
     url: "https://particles.js.org/images/google.svg",
   },
+
   background: {
     color: "#000000",
     image: "",

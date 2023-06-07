@@ -8,7 +8,7 @@ function CarouselScreen() {
   let cards = [
     {
       key: "test1",
-      content: <Card image={imageTest} />,
+      content: <Card image="https://particles.js.org/images/google.svg" />,
     },
     {
       key: "test2",
