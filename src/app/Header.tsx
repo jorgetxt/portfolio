@@ -14,14 +14,22 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 
-interface Languages {
+import { ThemeContext, ThemesName } from "../components/Theme";
+
+interface OptionsObject {
   name: string;
   key: string;
   image: string;
 }
 
+interface OptionsObjectTheme {
+  name: string;
+  key: ThemesName;
+  image: string;
+}
+
 const pages = ["Products", "Pricing", "Blog"];
-const languages: Languages[] = [
+const languages: OptionsObject[] = [
   {
     image:
       "https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg",
@@ -36,27 +44,60 @@ const languages: Languages[] = [
   },
 ];
 
+const themes: OptionsObjectTheme[] = [
+  {
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg",
+    key: "dark",
+    name: "Oscuro",
+  },
+  {
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Flag_of_the_United_States_%28DoS_ECA_Color_Standard%29.svg/1920px-Flag_of_the_United_States_%28DoS_ECA_Color_Standard%29.svg.png",
+    key: "light",
+    name: "Claro",
+  },
+];
+
 function ResponsiveAppBar() {
+  const [theme, setTheme] = React.useContext(ThemeContext);
+
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
+  const [anchorElLanguage, setAnchorElLanguage] =
+    React.useState<null | HTMLElement>(null);
+
+  const [anchorElTheme, setAnchorElTheme] = React.useState<null | HTMLElement>(
     null
   );
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget);
+  const handleOpenLanguageMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElLanguage(event.currentTarget);
+  };
+
+  const handleOpenThemeMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElTheme(event.currentTarget);
   };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
+  const handleCloseLanguageMenu = () => {
+    setAnchorElLanguage(null);
+  };
+
+  const handleCloseThemeMenu = () => {
+    setAnchorElTheme(null);
+  };
+
+  const handleChooseThemeMenu = (key: typeof theme) => {
+    setTheme(key);
+    setAnchorElTheme(null);
   };
 
   return (
@@ -151,7 +192,7 @@ function ResponsiveAppBar() {
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open languages">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+              <IconButton onClick={handleOpenLanguageMenu} sx={{ p: 0 }}>
                 <Avatar
                   alt="Remy Sharp"
                   src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg"
@@ -162,7 +203,7 @@ function ResponsiveAppBar() {
             <Menu
               sx={{ mt: "45px" }}
               id="menu-appbar"
-              anchorEl={anchorElUser}
+              anchorEl={anchorElLanguage}
               anchorOrigin={{
                 vertical: "top",
                 horizontal: "right",
@@ -172,11 +213,11 @@ function ResponsiveAppBar() {
                 vertical: "top",
                 horizontal: "right",
               }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
+              open={Boolean(anchorElLanguage)}
+              onClose={handleCloseLanguageMenu}
             >
               {languages.map(({ image, key, name }) => (
-                <MenuItem key={key} onClick={handleCloseUserMenu}>
+                <MenuItem key={key} onClick={handleCloseLanguageMenu}>
                   <Avatar
                     alt={name}
                     src={image}
@@ -185,6 +226,51 @@ function ResponsiveAppBar() {
                   <Typography textAlign="center">{name}</Typography>
                 </MenuItem>
               ))}
+            </Menu>
+          </Box>
+
+          <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="Open temas">
+              <IconButton onClick={handleOpenThemeMenu} sx={{ p: 0 }}>
+                <Avatar
+                  alt="Remy Sharp"
+                  src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg"
+                  sx={{ width: 24, height: 24 }}
+                />
+              </IconButton>
+            </Tooltip>
+
+            <Menu
+              sx={{ mt: "45px" }}
+              id="menu-appbar-2"
+              anchorEl={anchorElTheme}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              open={Boolean(anchorElTheme)}
+              onClose={handleCloseThemeMenu}
+            >
+              <ThemeContext.Provider value={theme}>
+                {themes.map(({ image, key, name }) => (
+                  <MenuItem
+                    key={key}
+                    onClick={() => handleChooseThemeMenu(key)}
+                  >
+                    <Avatar
+                      alt={name}
+                      src={image}
+                      sx={{ width: 24, height: 24, margin: 1 }}
+                    />
+                    <Typography textAlign="center">{name}</Typography>
+                  </MenuItem>
+                ))}
+              </ThemeContext.Provider>
             </Menu>
           </Box>
         </Toolbar>

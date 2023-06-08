@@ -1,4 +1,7 @@
+"use client";
 import "./globals.css";
+import { ThemeProvider } from "@mui/material/styles";
+import Theme from "../components/Theme";
 
 export const metadata = {
   title: "Next.js",
@@ -11,8 +14,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={"main"}>
-      <body>{children}</body>
-    </html>
+    <ThemeProvider theme={Theme}>
+      <html lang="en" className={"main"}>
+        <body>{children}</body>
+      </html>
+    </ThemeProvider>
   );
 }
