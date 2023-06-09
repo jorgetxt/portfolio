@@ -2,13 +2,12 @@
 import { createTheme, ThemeOptions, Theme } from "@mui/material/styles";
 import { green, yellow, grey } from "@mui/material/colors";
 
-import { createContext, useContext } from "react";
+import { useContext } from "react";
+import { ThemeContext } from "./ThemeContext";
 
 export type ThemesName = "dark" | "light";
 
 export type Themes = Record<ThemesName, Theme>;
-
-export const ThemeContext = createContext<ThemesName>("light");
 
 const baseTheme = createTheme({
   palette: {
@@ -54,7 +53,9 @@ const themes: Themes = {
 const ThemeChoose = () => {
   const theme = useContext(ThemeContext);
 
-  return themes[theme];
+  console.log("Tema se cambio", theme.theme);
+
+  return themes[theme.theme];
 };
 
 export default ThemeChoose;

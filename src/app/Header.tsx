@@ -14,7 +14,8 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 
-import { ThemeContext, ThemesName } from "../components/Theme";
+import { ThemesName } from "../components/Theme";
+import { ThemeContext } from "../components/ThemeContext";
 
 interface OptionsObject {
   name: string;
@@ -60,7 +61,7 @@ const themes: OptionsObjectTheme[] = [
 ];
 
 function ResponsiveAppBar() {
-  const [theme, setTheme] = React.useContext(ThemeContext);
+  const themeContext = React.useContext(ThemeContext);
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
@@ -95,8 +96,8 @@ function ResponsiveAppBar() {
     setAnchorElTheme(null);
   };
 
-  const handleChooseThemeMenu = (key: typeof theme) => {
-    setTheme(key);
+  const handleChooseThemeMenu = (key: ThemesName) => {
+    themeContext.setTheme(key);
     setAnchorElTheme(null);
   };
 
@@ -256,21 +257,16 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElTheme)}
               onClose={handleCloseThemeMenu}
             >
-              <ThemeContext.Provider value={theme}>
-                {themes.map(({ image, key, name }) => (
-                  <MenuItem
-                    key={key}
-                    onClick={() => handleChooseThemeMenu(key)}
-                  >
-                    <Avatar
-                      alt={name}
-                      src={image}
-                      sx={{ width: 24, height: 24, margin: 1 }}
-                    />
-                    <Typography textAlign="center">{name}</Typography>
-                  </MenuItem>
-                ))}
-              </ThemeContext.Provider>
+              {themes.map(({ image, key, name }) => (
+                <MenuItem key={key} onClick={() => handleChooseThemeMenu(key)}>
+                  <Avatar
+                    alt={name}
+                    src={image}
+                    sx={{ width: 24, height: 24, margin: 1 }}
+                  />
+                  <Typography textAlign="center">{name}</Typography>
+                </MenuItem>
+              ))}
             </Menu>
           </Box>
         </Toolbar>
