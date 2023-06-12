@@ -1,5 +1,7 @@
+import { ThemeProvider } from "@mui/material/styles";
+
 import React, { createContext, useState } from "react";
-import { ThemesName } from "./Theme";
+import themes, { ThemesName } from "./Theme";
 
 interface Props {
   children: React.ReactNode;
@@ -8,10 +10,9 @@ interface Props {
 function MyProvider({ children }: Props) {
   const [theme, setTheme] = useState<ThemesName>("light");
   // ...
-  console.log("cambio de context ", theme);
   return (
     <ThemeContext.Provider value={{ theme: theme, setTheme }}>
-      {children}
+      <ThemeProvider theme={themes[theme]}>{children}</ThemeProvider>
     </ThemeContext.Provider>
   );
 }

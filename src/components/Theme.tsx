@@ -22,6 +22,7 @@ const baseTheme = createTheme({
 
 const dark = createTheme(baseTheme, {
   palette: {
+    type: "dark",
     info: {
       main: baseTheme.palette.secondary.main,
     },
@@ -33,6 +34,7 @@ const dark = createTheme(baseTheme, {
 
 const light = createTheme(baseTheme, {
   palette: {
+    type: "light",
     info: {
       main: baseTheme.palette.secondary.main,
     },
@@ -45,4 +47,11 @@ const light = createTheme(baseTheme, {
   },
 } as ThemeOptions);
 
-export default "light" as ThemesName;
+const Themes: Themes = {
+  dark,
+  light,
+};
+
+// console.log("")
+
+export default Themes;

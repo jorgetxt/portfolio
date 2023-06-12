@@ -48,13 +48,13 @@ const languages: OptionsObject[] = [
 const themes: OptionsObjectTheme[] = [
   {
     image:
-      "https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg",
+      "https://upload.wikimedia.org/wikipedia/commons/4/49/A_black_image.jpg",
     key: "dark",
     name: "Oscuro",
   },
   {
     image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Flag_of_the_United_States_%28DoS_ECA_Color_Standard%29.svg/1920px-Flag_of_the_United_States_%28DoS_ECA_Color_Standard%29.svg.png",
+      "https://upload.wikimedia.org/wikipedia/commons/7/70/Solid_white.svg",
     key: "light",
     name: "Claro",
   },
@@ -192,7 +192,7 @@ function ResponsiveAppBar() {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open languages">
+            <Tooltip title="Open languages" style={{ marginRight: 8 }}>
               <IconButton onClick={handleOpenLanguageMenu} sx={{ p: 0 }}>
                 <Avatar
                   alt="Remy Sharp"
@@ -228,14 +228,14 @@ function ResponsiveAppBar() {
                 </MenuItem>
               ))}
             </Menu>
-          </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open temas">
               <IconButton onClick={handleOpenThemeMenu} sx={{ p: 0 }}>
                 <Avatar
                   alt="Remy Sharp"
-                  src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg"
+                  src={
+                    themes.find(({ key }) => key === themeContext.theme)?.image
+                  }
                   sx={{ width: 24, height: 24 }}
                 />
               </IconButton>

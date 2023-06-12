@@ -1,10 +1,7 @@
 "use client";
 import "./globals.css";
 import React from "react";
-import { ThemeProvider } from "@mui/material/styles";
-import ThemeProviderAll from "../components/ThemeContext";
-// import Theme from "../components/Theme";
-import { ThemeContext } from "../components/ThemeContext";
+import ThemeProvider from "../components/ThemeContext";
 
 export const metadata = {
   title: "Next.js",
@@ -16,18 +13,11 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // const themeContext = React.useContext(ThemeContext);
-
-  // const theme = themeContext.theme || "light";
-
-  // console.log("Tema se cambio Layout", theme);
   return (
-    <ThemeProvider theme={theme}>
-      <ThemeProviderAll>
-        <html lang="en" className={"main"}>
-          <body>{children}</body>
-        </html>
-      </ThemeProviderAll>
+    <ThemeProvider>
+      <html lang="en" className={"main"}>
+        <body>{children}</body>
+      </html>
     </ThemeProvider>
   );
 }
