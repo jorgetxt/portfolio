@@ -45,17 +45,4 @@ const light = createTheme(baseTheme, {
   },
 } as ThemeOptions);
 
-const themes: Themes = {
-  dark,
-  light,
-};
-
-const ThemeChoose = () => {
-  const theme = useContext(ThemeContext);
-
-  console.log("Tema se cambio", theme.theme);
-
-  return themes[theme.theme];
-};
-
-export default ThemeChoose;
+export default "light" as ThemesName;

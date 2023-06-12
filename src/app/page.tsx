@@ -1,5 +1,6 @@
 "use client";
 import Grid from "@mui/material/Grid";
+import React from "react";
 
 import Header from "./Header";
 import Slider1 from "./Slider1";
@@ -9,8 +10,12 @@ import PortfolioScreen from "../components/PortfolioScreen";
 import TextSlider from "../components/TextSlider";
 import ParallaxImg from "../components/HorizontalParallax";
 import CarouselScreen from "../components/CarouselScreen";
+import { ThemeContext } from "../components/ThemeContext";
 
 export default function Home() {
+  const themeContext = React.useContext(ThemeContext);
+
+  console.log("Page", themeContext.theme);
   return (
     <>
       <Grid container>

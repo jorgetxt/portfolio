@@ -5,7 +5,7 @@ import { loadFull } from "tsparticles";
 import options from "./OptionsParticlesLetter";
 import Card from "../app/Card";
 
-import Grid from "@mui/material/Grid";
+// import Grid from "@mui/material/Grid";
 
 const App = () => {
   const particlesInit = useCallback(async (engine: Engine) => {
