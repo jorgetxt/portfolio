@@ -13,6 +13,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+import { useTranslation } from "react-i18next";
 
 import { ThemesName } from "../components/Theme";
 import { ThemeContext } from "../components/ThemeContext";
@@ -34,13 +35,13 @@ const languages: OptionsObject[] = [
   {
     image:
       "https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg",
-    key: "espanol",
+    key: "es",
     name: "Español",
   },
   {
     image:
       "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Flag_of_the_United_States_%28DoS_ECA_Color_Standard%29.svg/1920px-Flag_of_the_United_States_%28DoS_ECA_Color_Standard%29.svg.png",
-    key: "english",
+    key: "en",
     name: "English",
   },
 ];
@@ -62,6 +63,10 @@ const themes: OptionsObjectTheme[] = [
 
 function ResponsiveAppBar() {
   const themeContext = React.useContext(ThemeContext);
+
+  const {
+    i18n: { changeLanguage, language },
+  } = useTranslation();
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
@@ -88,7 +93,8 @@ function ResponsiveAppBar() {
     setAnchorElNav(null);
   };
 
-  const handleCloseLanguageMenu = () => {
+  const handleCloseLanguageMenu = (key: string) => {
+    changeLanguage(key);
     setAnchorElLanguage(null);
   };
 
@@ -196,7 +202,7 @@ function ResponsiveAppBar() {
               <IconButton onClick={handleOpenLanguageMenu} sx={{ p: 0 }}>
                 <Avatar
                   alt="Remy Sharp"
-                  src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg"
+                  src={languages.find(({ key }) => key === language)?.image}
                   sx={{ width: 24, height: 24 }}
                 />
               </IconButton>
@@ -218,7 +224,10 @@ function ResponsiveAppBar() {
               onClose={handleCloseLanguageMenu}
             >
               {languages.map(({ image, key, name }) => (
-                <MenuItem key={key} onClick={handleCloseLanguageMenu}>
+                <MenuItem
+                  key={key}
+                  onClick={() => handleCloseLanguageMenu(key)}
+                >
                   <Avatar
                     alt={name}
                     src={image}

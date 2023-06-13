@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useTrail, a } from "@react-spring/web";
 import Button from "@mui/material/Button";
+import { useTranslation } from "react-i18next";
 
 import styles from "./stylesText.module.css";
 import Stack from "@mui/material/Stack";
@@ -30,6 +31,8 @@ const Trail: React.FC<{
 };
 
 export default function App() {
+  const { t } = useTranslation();
+
   const [open, set] = useState(true);
   return (
     <div className={styles.container} onClick={() => set((state) => !state)}>
@@ -42,7 +45,8 @@ export default function App() {
         </Typography>
         {/* <span></span> */}
         <Typography variant="h2" color="white">
-          desarrollador web
+          {/* desarrollador web */}
+          {t("test")}
         </Typography>
         {/* <span style={{ marginBottom: 10 }}>Hola, soy Jorge</span> */}
         {/* <span>desarrollador web</span> */}
