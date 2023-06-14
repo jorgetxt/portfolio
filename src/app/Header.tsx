@@ -93,7 +93,10 @@ function ResponsiveAppBar() {
     setAnchorElNav(null);
   };
 
-  const handleCloseLanguageMenu = (key: string) => {
+  const handleCloseLanguageMenu = () => {
+    setAnchorElLanguage(null);
+  };
+  const handleChooseLanguageMenu = (key: string) => {
     changeLanguage(key);
     setAnchorElLanguage(null);
   };
@@ -226,7 +229,7 @@ function ResponsiveAppBar() {
               {languages.map(({ image, key, name }) => (
                 <MenuItem
                   key={key}
-                  onClick={() => handleCloseLanguageMenu(key)}
+                  onClick={() => handleChooseLanguageMenu(key)}
                 >
                   <Avatar
                     alt={name}
