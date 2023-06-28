@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTrail, a } from "@react-spring/web";
 import Button from "@mui/material/Button";
 import { useTranslation } from "react-i18next";
@@ -33,10 +33,36 @@ const Trail: React.FC<{
 export default function App() {
   const { t } = useTranslation();
 
-  const [open, set] = useState(true);
+  // const [open, set] = useState(true);
+
+  const [isVisible, setIsVisible] = useState(true);
+  // const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    window.addEventListener("scroll", listenToScroll);
+    return () => window.removeEventListener("scroll", listenToScroll);
+    //eslint-disable-next-line
+  }, []);
+
+  const listenToScroll = () => {
+    let heightToHideFrom = 200;
+    const winScroll =
+      document.body.scrollTop || document.documentElement.scrollTop;
+    // setHeight(winScroll);
+
+    if (winScroll > heightToHideFrom) {
+      isVisible && setIsVisible(false);
+    } else {
+      setIsVisible(true);
+    }
+  };
+
   return (
-    <div className={styles.container} onClick={() => set((state) => !state)}>
-      <Trail open={open}>
+    <div
+      className={styles.container}
+      // onClick={() => setIsVisible((state) => !state)}
+    >
+      <Trail open={isVisible}>
         <Typography variant="h1" color="white">
           Hola!
         </Typography>
@@ -57,7 +83,12 @@ export default function App() {
           <Button variant="outlined" color="secondary">
             Descargar CV
           </Button>
-          <Button variant="outlined">ver github</Button>
+          <Button
+            variant="outlined"
+            onClick={() => window.open("https://github.com/jorgetxt", "_blank")}
+          >
+            ver github
+          </Button>
         </Stack>
       </Trail>
     </div>

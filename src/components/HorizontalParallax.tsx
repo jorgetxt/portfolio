@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { Parallax, ParallaxLayer, IParallax } from "@react-spring/parallax";
 import styles from "./stylesParallax.module.css";
 
@@ -32,16 +32,50 @@ const Page = ({ offset, gradient, onClick }: PageProps) => (
 export default function App() {
   const parallax = useRef<IParallax>(null);
 
+  const [isVisible, setIsVisible] = useState(true);
+
   const scroll = (to: number) => {
     if (parallax.current) {
       parallax.current.scrollTo(to);
     }
   };
+
+  useEffect(() => {
+    window.addEventListener("scroll", listenToScroll);
+    return () => window.removeEventListener("scroll", listenToScroll);
+
+    //eslint-disable-next-line
+  }, []);
+
+  const listenToScroll = () => {
+    let heightToHideFrom = 200;
+    const winScroll =
+      document.body.scrollTop || document.documentElement.scrollTop;
+    // setHeight(winScroll);
+
+    if (winScroll > heightToHideFrom) {
+      isVisible && setIsVisible(false);
+    } else {
+      setIsVisible(true);
+    }
+  };
+
   return (
     <div style={{ background: "#dfdfdf" }}>
       <Parallax
         className={styles.container}
-        style={{ overflow: "hidden", width: "50%" }}
+        style={{
+          overflow: "hidden",
+          width: "50%",
+          transition: "visibility 0.5s,opacity 0.5s linear",
+
+          // opacity: "60%",
+          ...(!isVisible && {
+            visibility: "hidden",
+            opacity: "0%",
+            // transition: "visibility 1s,opacity 0.5s linear",
+          }),
+        }}
         ref={parallax}
         pages={3}
         horizontal
