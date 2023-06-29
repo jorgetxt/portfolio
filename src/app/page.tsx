@@ -11,6 +11,7 @@ import TextSlider from "../components/TextSlider";
 import ParallaxImg from "../components/HorizontalParallax";
 import CarouselScreen from "../components/CarouselScreen";
 import { ThemeContext } from "../components/ThemeContext";
+import "pathseg";
 
 export default function Home() {
   const themeContext = React.useContext(ThemeContext);
