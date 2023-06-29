@@ -110,8 +110,40 @@ function ResponsiveAppBar() {
     setAnchorElTheme(null);
   };
 
+  const [isVisible, setIsVisible] = React.useState(true);
+  // const [height, setHeight] = useState(0);
+
+  React.useEffect(() => {
+    window.addEventListener("scroll", listenToScroll);
+    return () => window.removeEventListener("scroll", listenToScroll);
+    //eslint-disable-next-line
+  }, []);
+
+  const listenToScroll = () => {
+    let heightToHideFrom = 1;
+    const winScroll =
+      document.body.scrollTop || document.documentElement.scrollTop;
+    // setHeight(winScroll);
+
+    if (winScroll > heightToHideFrom) {
+      isVisible && setIsVisible(false);
+    } else {
+      setIsVisible(true);
+    }
+  };
+
   return (
-    <AppBar position="static">
+    <AppBar
+      position="fixed"
+      sx={{
+        ...(!isVisible && { width: "25vw", opacity: "70%" }),
+        transition: (theme) =>
+          theme.transitions.create("all", {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.leavingScreen,
+          }),
+      }}
+    >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
@@ -189,7 +221,7 @@ function ResponsiveAppBar() {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
+            {/* {pages.map((page) => (
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
@@ -197,7 +229,7 @@ function ResponsiveAppBar() {
               >
                 {page}
               </Button>
-            ))}
+            ))} */}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
@@ -210,6 +242,7 @@ function ResponsiveAppBar() {
                 />
               </IconButton>
             </Tooltip>
+
             <Menu
               sx={{ mt: "45px" }}
               id="menu-appbar"

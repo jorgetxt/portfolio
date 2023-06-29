@@ -40,6 +40,14 @@ export default function App() {
     }
   };
 
+  const scrollDefault = () => {
+    if (!!parallax.current && parallax.current?.offset < 2) {
+      parallax.current.scrollTo(parallax.current?.offset + 1);
+    } else {
+      parallax.current?.scrollTo(0);
+    }
+  };
+
   useEffect(() => {
     window.addEventListener("scroll", listenToScroll);
     return () => window.removeEventListener("scroll", listenToScroll);
@@ -59,6 +67,11 @@ export default function App() {
       setIsVisible(true);
     }
   };
+
+  useEffect(() => {
+    const t = setInterval(() => scrollDefault(), 3000);
+    return () => clearInterval(t);
+  }, []);
 
   return (
     <div style={{ background: "#dfdfdf" }}>

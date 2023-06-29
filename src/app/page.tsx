@@ -1,6 +1,6 @@
 "use client";
 import Grid from "@mui/material/Grid";
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import Header from "./Header";
 import Slider1 from "./Slider1";
@@ -11,7 +11,6 @@ import TextSlider from "../components/TextSlider";
 import ParallaxImg from "../components/HorizontalParallax";
 import CarouselScreen from "../components/CarouselScreen";
 import { ThemeContext } from "../components/ThemeContext";
-import "pathseg";
 
 export default function Home() {
   const themeContext = React.useContext(ThemeContext);
@@ -20,7 +19,7 @@ export default function Home() {
   return (
     <>
       <Grid container>
-        <Grid item xs={12} style={{ zIndex: 2 }}>
+        <Grid item xs={6} style={{ zIndex: 3 }}>
           <Header />
         </Grid>
         <Grid item container xs={12} style={{ zIndex: 2, minHeight: "100vh" }}>

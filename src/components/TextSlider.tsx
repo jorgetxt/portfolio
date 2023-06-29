@@ -6,6 +6,8 @@ import { useTranslation } from "react-i18next";
 import styles from "./stylesText.module.css";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import DownloadIcon from "@mui/icons-material/Download";
 
 const Trail: React.FC<{
   open: boolean;
@@ -80,12 +82,17 @@ export default function App() {
         {/* <span>Sit</span> */}
 
         <Stack direction="row" spacing={2}>
-          <Button variant="outlined" color="secondary">
+          <Button
+            variant="outlined"
+            color="secondary"
+            endIcon={<DownloadIcon />}
+          >
             Descargar CV
           </Button>
           <Button
             variant="outlined"
             onClick={() => window.open("https://github.com/jorgetxt", "_blank")}
+            endIcon={<GitHubIcon />}
           >
             ver github
           </Button>
