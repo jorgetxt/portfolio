@@ -26,8 +26,13 @@ const dark = createTheme(baseTheme, {
     info: {
       main: baseTheme.palette.secondary.main,
     },
+    primary: {
+      main: "#A245F5",
+      light: "#8136C2",
+      dark: "#4E2175",
+    },
     secondary: {
-      main: green[500],
+      main: "#FAAB2F",
     },
   },
 } as ThemeOptions);

@@ -39,7 +39,9 @@ function Card({ image }: Props) {
           <Button variant="contained">test</Button>
         </Grid>
         <Grid item>
-          <Button variant="contained">test</Button>
+          <Button variant="outlined" color="secondary">
+            test
+          </Button>
         </Grid>
       </Grid>
     </animated.div>
