@@ -11,11 +11,15 @@ import TextSlider from "../components/TextSlider";
 import ParallaxImg from "../components/HorizontalParallax";
 import CarouselScreen from "../components/CarouselScreen";
 import { ThemeContext } from "../components/ThemeContext";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material";
 
 export default function Home() {
   const themeContext = React.useContext(ThemeContext);
 
-  console.log("Page", themeContext.theme);
+  const theme = useTheme();
+  const isSmallOrLess = useMediaQuery(theme.breakpoints.up("md"));
+
   return (
     <>
       <Grid container>
@@ -23,12 +27,14 @@ export default function Home() {
           <Header />
         </Grid>
         <Grid item container xs={12} style={{ zIndex: 2, minHeight: "100vh" }}>
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={6} style={{ overflow: "hidden" }}>
             <TextSlider />
           </Grid>
-          <Grid item xs={12} md={6} style={{ overflow: "hidden" }}>
-            <ParallaxImg />
-          </Grid>
+          {isSmallOrLess && (
+            <Grid item xs={12} md={6} style={{ overflow: "hidden" }}>
+              && <ParallaxImg />
+            </Grid>
+          )}
         </Grid>
 
         {/* <Grid item xs={12} style={{ overflow: "hidden", zIndex: 2 }}>
@@ -38,11 +44,11 @@ export default function Home() {
 
       <Grid
         container
-        spacing={2}
-        justifyContent="space-evenly"
+        // spacing={2}
+        // justifyContent="space-evenly"
         alignItems="center"
         minHeight="100vh"
-        padding={2}
+        // padding={2}
       >
         {/* <Grid item style={{ zIndex: 2 }}>
           <Card

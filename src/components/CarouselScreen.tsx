@@ -27,7 +27,7 @@ function CarouselScreen() {
         width="60%"
         margin="0 auto"
         offset={2}
-        showArrows={false}
+        showArrows={true}
       />
     </div>
   );

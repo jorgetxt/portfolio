@@ -9,10 +9,11 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
 import { ThemesName } from "../components/Theme";
@@ -78,6 +79,9 @@ function ResponsiveAppBar() {
     null
   );
 
+  const theme = useTheme();
+  const isSmallOrLess = useMediaQuery(theme.breakpoints.up("md"));
+
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -136,7 +140,7 @@ function ResponsiveAppBar() {
     <AppBar
       position="fixed"
       sx={{
-        ...(!isVisible && { width: "25vw", opacity: "70%" }),
+        ...(!isVisible && isSmallOrLess && { width: "25vw", opacity: "70%" }),
         transition: (theme) =>
           theme.transitions.create("all", {
             easing: theme.transitions.easing.sharp,
