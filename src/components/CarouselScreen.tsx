@@ -7,16 +7,34 @@ import imageTest from "../../public/sliders/developer_slide1.jpg";
 function CarouselScreen() {
   let cards = [
     {
-      key: "test1",
-      content: <Card image="https://particles.js.org/images/google.svg" />,
+      key: "card1",
+      content: (
+        <Card
+          image="https://particles.js.org/images/google.svg"
+          title={"title_card1"}
+          description={"description_card1"}
+        />
+      ),
     },
     {
-      key: "test2",
-      content: <Card image={imageTest} />,
+      key: "card2",
+      content: (
+        <Card
+          image={imageTest}
+          title={"title_card2"}
+          description={"description_card2"}
+        />
+      ),
     },
     {
-      key: "test3",
-      content: <Card image={imageTest} />,
+      key: "card3",
+      content: (
+        <Card
+          image={imageTest}
+          title={"title_card3"}
+          description={"description_card3"}
+        />
+      ),
     },
   ];
   return (

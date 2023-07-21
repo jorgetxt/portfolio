@@ -5,12 +5,17 @@ import Image, { StaticImageData } from "next/image";
 import Styles from "./CardCarousel.module.css";
 import React, { useState } from "react";
 import { useSpring, animated } from "react-spring";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   image: StaticImageData | string;
+  title: string;
+  description: string;
 }
 
-function Card({ image }: Props) {
+function Card({ image, title, description }: Props) {
+  const { t } = useTranslation();
+
   const [show, setShown] = useState(false);
 
   const props3 = useSpring({
@@ -28,19 +33,15 @@ function Card({ image }: Props) {
     >
       <Image src={image} alt="Developer" height={200} width={200} />
 
-      <h2>Title</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-        nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-        volutpat.
-      </p>
+      <h2>{t(title)}</h2>
+      <p>{t(description)}</p>
       <Grid container spacing={2}>
         <Grid item>
-          <Button variant="contained">test</Button>
+          <Button variant="contained">{t("button1_card")} </Button>
         </Grid>
         <Grid item>
           <Button variant="outlined" color="secondary">
-            test
+            {t("button2_card")}
           </Button>
         </Grid>
       </Grid>

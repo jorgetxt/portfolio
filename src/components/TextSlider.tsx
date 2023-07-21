@@ -66,15 +66,15 @@ export default function App() {
     >
       <Trail open={isVisible}>
         <Typography variant="h1" color="white">
-          Hola!
+          {t("title1_slider")}
         </Typography>
         <Typography variant="h1" color="white">
-          soy Jorge
+          {t("title2_slider")}
         </Typography>
         {/* <span></span> */}
         <Typography variant="h2" color="white">
           {/* desarrollador web */}
-          {t("test")}
+          {t("title3_slider")}
         </Typography>
         {/* <span style={{ marginBottom: 10 }}>Hola, soy Jorge</span> */}
         {/* <span>desarrollador web</span> */}
@@ -87,14 +87,14 @@ export default function App() {
             color="secondary"
             endIcon={<DownloadIcon />}
           >
-            Descargar CV
+            {t("downloadCV_button_slider")}
           </Button>
           <Button
             variant="outlined"
             onClick={() => window.open("https://github.com/jorgetxt", "_blank")}
             endIcon={<GitHubIcon />}
           >
-            ver github
+            {t("github_button_slider")}
           </Button>
         </Stack>
       </Trail>

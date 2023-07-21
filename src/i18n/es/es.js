@@ -8,8 +8,8 @@ const es = {
 
   //cards
 
-  button1_card: "button1",
-  button2_card: "button2",
+  button1_card: "ver proyecto",
+  button2_card: "button2 es",
 
   //Card1
   title_card1: "API Node y MongoDB",
@@ -22,8 +22,8 @@ const es = {
     "API REST usando Node con el framewoek Nest y base de datos  relacional SQL",
 
   //Card3
-  title_card2: "Front React, redux-toolkit y MUI",
-  description_card2:
+  title_card3: "Front React, redux-toolkit y MUI",
+  description_card3:
     "Front usando React con redux-toolkit y base de datos  relacional SQL",
 };
 
