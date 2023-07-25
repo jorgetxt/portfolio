@@ -1,6 +1,6 @@
 "use client";
 import Grid from "@mui/material/Grid";
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import Header from "./Header";
 import Slider1 from "./Slider1";

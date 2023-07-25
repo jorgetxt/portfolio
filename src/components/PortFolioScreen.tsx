@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import type { Container, Engine } from "tsparticles-engine";
-import Particles, { ParticlesProps } from "react-tsparticles";
+import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 import options from "./OptionsParticlesLetter";
 import "pathseg";
@@ -8,7 +8,7 @@ import Head from "next/head";
 
 // import Grid from "@mui/material/Grid";
 
-const App = () => {
+const PortfolioScreen = () => {
   const particlesInit = useCallback(async (engine: Engine) => {
     console.log(engine);
     options;
@@ -25,7 +25,7 @@ const App = () => {
     []
   );
 
-  if (process.browser) {
+  if (!typeof window) {
     require("pathseg");
   }
 
@@ -224,4 +224,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default PortfolioScreen;
