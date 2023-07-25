@@ -1,8 +1,8 @@
-"use client";
+// "use client";
 import "./globals.css";
 import React from "react";
 import ThemeProvider from "../components/ThemeContext";
-import "../i18n/i18n";
+// import "../i18n/i18n";
 import "pathseg";
 
 export const metadata = {
@@ -16,10 +16,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ThemeProvider>
-      <html lang="en" className={"main"}>
-        <body>{children}</body>
-      </html>
-    </ThemeProvider>
+    // <ThemeProvider>
+    <html lang="en" className={"main"}>
+      <body>{children}</body>
+    </html>
+    // </ThemeProvider>
   );
 }
