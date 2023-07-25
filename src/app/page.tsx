@@ -3,19 +3,16 @@ import Grid from "@mui/material/Grid";
 import React from "react";
 
 import Header from "./Header";
-import Slider1 from "./Slider1";
-// import ImageSl1 from "../../public/sliders/developer_slide1.jpg";
-// import Card from "./Card";
 import PortfolioScreen from "../components/PortfolioScreen";
 import TextSlider from "../components/TextSlider";
 import ParallaxImg from "../components/HorizontalParallax";
 import CarouselScreen from "../components/CarouselScreen";
-import { ThemeContext } from "../components/ThemeContext";
+// import { ThemeContext } from "../components/ThemeContext";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material";
 
 export default function Home() {
-  const themeContext = React.useContext(ThemeContext);
+  // const themeContext = React.useContext(ThemeContext);
 
   const theme = useTheme();
   const isSmallOrLess = useMediaQuery(theme.breakpoints.up("md"));
