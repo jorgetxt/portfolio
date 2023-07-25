@@ -7,17 +7,18 @@ import imageTest from "../../public/sliders/developer_slide1.jpg";
 function CarouselScreen() {
   let cards = [
     {
-      key: "card1",
+      key: "card1-node-mongo",
       content: (
         <Card
           image="https://particles.js.org/images/google.svg"
           title={"title_card1"}
           description={"description_card1"}
+          url="https://github.com/jorgetxt/server-basic-express"
         />
       ),
     },
     {
-      key: "card2",
+      key: "card2-nest",
       content: (
         <Card
           image={imageTest}

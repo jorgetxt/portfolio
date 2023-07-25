@@ -11,9 +11,10 @@ interface Props {
   image: StaticImageData | string;
   title: string;
   description: string;
+  url?: string;
 }
 
-function Card({ image, title, description }: Props) {
+function Card({ image, title, description, url }: Props) {
   const { t } = useTranslation();
 
   const [show, setShown] = useState(false);
@@ -37,13 +38,20 @@ function Card({ image, title, description }: Props) {
       <p>{t(description)}</p>
       <Grid container spacing={2}>
         <Grid item>
-          <Button variant="contained">{t("button1_card")} </Button>
-        </Grid>
-        <Grid item>
-          <Button variant="outlined" color="secondary">
-            {t("button2_card")}
+          <Button
+            variant="contained"
+            onClick={() => url && window.open(url, "_blank")}
+          >
+            {t("button1_card")}{" "}
           </Button>
         </Grid>
+        {false && (
+          <Grid item>
+            <Button variant="outlined" color="secondary">
+              {t("button2_card")}
+            </Button>
+          </Grid>
+        )}
       </Grid>
     </animated.div>
   );
