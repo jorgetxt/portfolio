@@ -18,6 +18,7 @@ export default function Home() {
   const themeContext = React.useContext(ThemeContext);
 
   const theme = useTheme();
+
   const isSmallOrLess = useMediaQuery(theme.breakpoints.up("md"));
 
   return (
