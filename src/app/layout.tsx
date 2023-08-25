@@ -1,10 +1,5 @@
-"use client";
-import "./globals.css";
-import React from "react";
-import ThemeProvider from "../components/ThemeContext";
-import "../i18n/i18n";
-import "pathseg";
 import { Metadata } from "next";
+import Client from "./Client";
 
 export const metadata: Metadata = {
   title: "Jorge H. Dev",
@@ -16,11 +11,5 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <ThemeProvider>
-      <html lang="en" className={"main"}>
-        <body>{children}</body>
-      </html>
-    </ThemeProvider>
-  );
+  return <Client>{children}</Client>;
 }
