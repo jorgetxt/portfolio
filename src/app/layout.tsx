@@ -4,8 +4,9 @@ import React from "react";
 import ThemeProvider from "../components/ThemeContext";
 import "../i18n/i18n";
 import "pathseg";
+import { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Jorge H. Dev",
   description: "Portfolio",
 };
