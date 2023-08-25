@@ -75,7 +75,7 @@ export default function Home() {
             title="Titulo"
           />
         </Grid> */}
-        <PortfolioScreen />
+        {/* <PortfolioScreen /> */}
         <Grid item xs={12}>
           <CarouselScreen />
         </Grid>
