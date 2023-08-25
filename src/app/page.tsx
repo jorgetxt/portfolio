@@ -6,7 +6,7 @@ import Header from "./Header";
 import Slider1 from "./Slider1";
 // import ImageSl1 from "../../public/sliders/developer_slide1.jpg";
 // import Card from "./Card";
-import PortfolioScreen from "../components/PortfolioScreen";
+import PortfolioScreen from "../components/PortFolioScreen";
 import TextSlider from "../components/TextSlider";
 import ParallaxImg from "../components/HorizontalParallax";
 import CarouselScreen from "../components/CarouselScreen";
