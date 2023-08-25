@@ -1,9 +1,9 @@
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import type { Container, Engine } from "tsparticles-engine";
 import Particles, { ParticlesProps } from "react-tsparticles";
 import { loadFull } from "tsparticles";
 import options from "./OptionsParticlesLetter";
-import "pathseg";
+// import "pathseg";
 import Head from "next/head";
 
 // import Grid from "@mui/material/Grid";
@@ -25,9 +25,9 @@ const App = () => {
     []
   );
 
-  if (process.browser) {
-    require("pathseg");
-  }
+  // if (typeof window) {
+  //   require("pathseg");
+  // }
 
   return (
     <>
